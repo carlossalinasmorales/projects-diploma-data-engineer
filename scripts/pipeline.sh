@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 
 set -euo pipefail # Detiene el pipeline si algo falla
 
@@ -19,11 +19,25 @@ ERROR_LOG="$LOG_DIR/error.log"
 #TOKEN
 TOKEN_CURSO="FAE_Usach"
 
+echo VARIABLES DE DIRECTORIOS CREADAS CORRECTAMENTE
 
 
-wget -O "$CSV_FILE" https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv 2>> "$ERROR_LOG"
+if wget -O "$CSV_FILE" https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv 2> "$ERROR_LOG"; then
+  echo "[OK] $CSV_FILE CREADO CORRECTAMENTE"
+else
+  echo "[ERROR] Algo fallo, revisar $ERROR_LOG"
+fi
 
-echo "Reporte generado por: $USER el $(date) - Token: $TOKEN_CURSO" > "$REPORT_FILE"
+if echo "Reporte generado por: $USER el $(date) - Token: $TOKEN_CURSO" > "$REPORT_FILE"; then
+  echo "[OK] REPORT USER Y TOKEN CREADO CORRECTAMENTE"
+else
+  echo "[ERROR] Algo fallo, revisar creacion de inea de reporte"
+fi
 
-tail -n +2 "$CSV_FILE" | cut -d',' -f3 | sort | uniq -c | sort -nr >> "$REPORT_FILE"
+if tail -n +2 "$CSV_FILE" | cut -d',' -f3 | sort | uniq -c | sort -nr >> "$REPORT_FILE"; then
+  echo "[OK] $CSV_FILE TRANSFORMADO CORRECTAMENTE"
+else
+  echo "[ERROR] PROBLEMAS AL TRANSFORMAR $CSV_FILE"
+fi
 
+echo "[OK END]"

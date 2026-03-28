@@ -3,3 +3,6 @@ logs/*
 
 output/*
 !output/.gitkeep
+
+data/raw/*
+!data/raw/.gitkeep

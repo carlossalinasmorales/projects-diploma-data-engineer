@@ -3,8 +3,11 @@
 ## Redaccion de documentacion
 
 ### Fuente de datos:
+
     Dataset Titanic
+
 ### Transformaciones:
+
     Filtrar columna de clases de pasajeros
     Contar cuantos pasajeros hay por clases
     Dejarlo registrado en archivo txt
@@ -22,5 +25,6 @@ flowchart TD
 ```
 
 ## Avisos
+
     El script esta pensado para ejecutarse desde la carpeta scripts
     Se le pidio ayuda a IA para profesionalizar el script sobre todo con temas de ubicaciones de carpetas y archivos
