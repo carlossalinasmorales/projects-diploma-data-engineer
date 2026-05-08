@@ -26,7 +26,7 @@ Este monorepo concentra ejercicios reales y académicos que muestran capacidad p
 
 La idea NO es mostrar solo notebooks sueltos, sino evidencia de criterio técnico, separación por módulos y documentación por proyecto.
 
-## Tech Stack
+## Tech Stack :o
 
 `Python` · `pandas` · `Jupyter` · `SQL` · `PostgreSQL` · `Bash` · `uv` · `wget`
 
