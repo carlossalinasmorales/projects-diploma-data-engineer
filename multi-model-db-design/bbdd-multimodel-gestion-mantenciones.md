@@ -1,13 +1,3 @@
-# Modelos y Gestión de Bases de Datos
-
-## Trabajo Final: Bases de Datos Multimodelos
-
-**Caso:** Gestión de mantenciones técnicas de unidades de climatización instaladas en sucursales de una empresa cliente.  
-**Integrantes:** Carlos Salinas y Nicolás Aguirre  
-**Profesor:** José Luis Martí Lara
-
----
-
 ## I. Modelo conceptual del caso
 
 El proceso de negocio modelado corresponde a la **gestión de mantenciones técnicas de unidades de climatización** instaladas en sucursales de una empresa cliente.
