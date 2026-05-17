@@ -38,6 +38,7 @@ La idea NO es mostrar solo notebooks sueltos, sino evidencia de criterio técnic
 | `jupyter-playground` | Playground de notebooks para preprocesamiento y ejercicios de datos. | Python, Jupyter, `uv` | [README](jupyter-playground/README.md) |
 | `pandas-sales-analysis` | Análisis de ventas desde CSV con generación de resumen procesado. | Python, pandas, Jupyter | [README](pandas-sales-analysis/README.md) |
 | `postgres-basic-queries` | Práctica de consultas SQL sobre `dvdrental`. | PostgreSQL, SQL | [README](postgres-basic-queries/README.md) |
+| `multi-model-db-design` | Practica de Modelado Multimodelo | UML, SQL, MongoDB, Cassandra, Neo4j  | [README](multi-model-db-design/README.md) |
 
 ## Repository Structure
 
@@ -66,12 +67,13 @@ git clone <repo-url>
 cd diploma-data-engineer
 ```
 
-Después, elegí el módulo que quieras revisar y seguí su README específico:
+Después, elige el módulo que quieras revisar y seguí su README específico:
 
 - [bash-mini-etl](bash-mini-etl/README.md)
 - [jupyter-playground](jupyter-playground/README.md)
 - [pandas-sales-analysis](pandas-sales-analysis/README.md)
 - [postgres-basic-queries](postgres-basic-queries/README.md)
+- [multi-model-db-design](multi-model-db-design/README.md)
 
 ## Requirements
 
