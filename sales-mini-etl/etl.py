@@ -63,7 +63,7 @@ def run_etl(csv_path, db_path):
     return run_id, timestamp
 
 
-# Configuracion para ejecutar script
-if __name__ == "__main__":
-    generated_run_id, generated_timestamp = run_etl(CSV_PATH, DB_PATH)
-    print(f"ETL Compeltado exitosamente. run_id={generated_run_id}, timestamp={generated_timestamp}")
+# # Configuracion para ejecutar script (no necesaria ya que se ejecuta en scheduler.py)
+# if __name__ == "__main__":
+#     generated_run_id, generated_timestamp = run_etl(CSV_PATH, DB_PATH)
+#     print(f"ETL Completado exitosamente. run_id={generated_run_id}, timestamp={generated_timestamp}")

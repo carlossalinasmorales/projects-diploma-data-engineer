@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException, Query
 from sqlalchemy import select
-
 from database import get_session
 from models import Resumen, TopProducto
 from schemas import ResumenSchema, TopProductosResponseSchema
