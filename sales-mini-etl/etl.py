@@ -140,7 +140,7 @@ def run_etl_orquestator(csv_path, db_path, fallo=False):
     run_id = uuid.uuid4().hex[:8]
     start = time.perf_counter()
 
-    log_event("INFO", "etapa_inicio", run_id, "run", "OK")
+    log_event("INFO", "etapa_inicio", run_id, "orquestation", "OK")
     print(f"Iniciando ETL.")
     try:
         sales = extract_sales(csv_path, run_id, fallo)
@@ -148,13 +148,13 @@ def run_etl_orquestator(csv_path, db_path, fallo=False):
         load_sales(resumen, top_productos, db_path, run_id)
 
         duracion_ms = round((time.perf_counter() - start) * 1000, 2)
-        log_event("INFO", "etapa_fin", run_id, "run", "OK", duracion_ms)
+        log_event("INFO", "etapa_fin", run_id, "orquestation", "OK", duracion_ms)
         print(f"ETL completado. run_id={run_id}, timestamp={timestamp}")
         return run_id, timestamp
     except Exception as error:
         duracion_ms = round((time.perf_counter() - start) * 1000, 2)
-        log_event("ERROR", "etapa_error", run_id, "run", "ERROR", duracion_ms)
-        write_alert(run_id, "run", str(error))
+        log_event("ERROR", "etapa_error", run_id, "orquestation", "ERROR", duracion_ms)
+        write_alert(run_id, "orquestation", str(error))
         print(f"ERROR en ETL. run_id={run_id}, timestamp={timestamp}")
         raise
 
