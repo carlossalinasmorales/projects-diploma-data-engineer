@@ -35,13 +35,14 @@ uv sync
 ```bash
 uv run python scheduler.py
 ```
-Importante: puedes manipualr los segundos y los ciclos para hacer más rapida la revision
+Importante: puedes manipular los segundos y los ciclos para hacer más rapida la revision
 
 ### 3. Ejecutar el ETL directo con fallo provocado
 
 ```bash
 uv run python etl.py --fallo
 ```
+Se provoca el fallo en la etapa inicial `extract`
 
 Eso genera evidencia en:
 - `logs/etl.log`
