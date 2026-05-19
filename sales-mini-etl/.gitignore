@@ -1,3 +1,5 @@
 .venv
 .atl
 db/ventas.db
+logs/alertas.log
+logs/etl.log

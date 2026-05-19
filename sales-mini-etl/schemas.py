@@ -1,7 +1,6 @@
 from datetime import datetime
 from pydantic import BaseModel
 
-
 class ResumenSchema(BaseModel):
     run_id: str
     timestamp: datetime
