@@ -28,7 +28,7 @@ La idea NO es mostrar solo notebooks sueltos, sino evidencia de criterio técnic
 
 ## Tech Stack :o
 
-`Python` · `pandas` · `Jupyter` · `SQL` · `PostgreSQL` · `Bash` · `uv` · `wget`
+`Python` · `pandas` · `Jupyter` · `SQL` · `PostgreSQL` · `SQLite` · `FastAPI` · `SQLAlchemy` · `Bash` · `uv` · `wget`
 
 ## Projects
 
@@ -36,9 +36,10 @@ La idea NO es mostrar solo notebooks sueltos, sino evidencia de criterio técnic
 | --- | --- | --- | --- |
 | `bash-mini-etl` | Pipeline ETL básico sobre Titanic con extracción, transformación y salida procesada. | Bash, `wget` | [README](bash-mini-etl/README.md) |
 | `jupyter-playground` | Playground de notebooks para preprocesamiento y ejercicios de datos. | Python, Jupyter, `uv` | [README](jupyter-playground/README.md) |
+| `sales-mini-etl` | Mini pipeline ETL con carga a SQLite, ejecución programada y API de consulta con FastAPI. | Python, pandas, SQLite, FastAPI, SQLAlchemy | [README](sales-mini-etl/README.md) |
 | `pandas-sales-analysis` | Análisis de ventas desde CSV con generación de resumen procesado. | Python, pandas, Jupyter | [README](pandas-sales-analysis/README.md) |
 | `postgres-basic-queries` | Práctica de consultas SQL sobre `dvdrental`. | PostgreSQL, SQL | [README](postgres-basic-queries/README.md) |
-| `multi-model-db-design` | Practica de Modelado Multimodelo | UML, SQL, MongoDB, Cassandra, Neo4j  | [README](multi-model-db-design/README.md) |
+| `multi-model-db-design` | Diseño de base de datos multimodelo para gestión de mantenciones con enfoque relacional, documental, columnar y de grafos. | UML, SQL, MongoDB, Cassandra, Neo4j | [README](multi-model-db-design/README.md) |
 
 ## Repository Structure
 
@@ -46,8 +47,10 @@ La idea NO es mostrar solo notebooks sueltos, sino evidencia de criterio técnic
 .
 ├── bash-mini-etl/
 ├── jupyter-playground/
+├── multi-model-db-design/
 ├── pandas-sales-analysis/
 ├── postgres-basic-queries/
+├── sales-mini-etl/
 └── README.md
 ```
 
@@ -71,6 +74,7 @@ Después, elige el módulo que quieras revisar y seguí su README específico:
 
 - [bash-mini-etl](bash-mini-etl/README.md)
 - [jupyter-playground](jupyter-playground/README.md)
+- [sales-mini-etl](sales-mini-etl/README.md)
 - [pandas-sales-analysis](pandas-sales-analysis/README.md)
 - [postgres-basic-queries](postgres-basic-queries/README.md)
 - [multi-model-db-design](multi-model-db-design/README.md)
@@ -82,6 +86,8 @@ Después, elige el módulo que quieras revisar y seguí su README específico:
 - **uv**
 - **Bash 4+**
 - **wget**
+- **SQLite**
+- **FastAPI / Uvicorn**
 - **PostgreSQL** con base de ejemplo `dvdrental`
 
 ## Notes
