@@ -64,6 +64,7 @@ def extract_sales(csv_path, run_id, fallo=False):
     try:
         if fallo:
             write_alert(run_id, "extract", "Fallo provocado para testing")
+            print(f"Fallo provocado para testing, revisa la alerta en logs/alertas.log. run_id={run_id}")
         sales = pd.read_csv(csv_path)
         duracion_ms = round((time.perf_counter() - start) * 1000, 2)
         log_event("INFO", "etapa_fin", run_id, "extract", "OK", duracion_ms)
@@ -140,7 +141,7 @@ def run_etl_orquestator(csv_path, db_path, fallo=False):
     start = time.perf_counter()
 
     log_event("INFO", "etapa_inicio", run_id, "run", "OK")
-
+    print(f"Iniciando ETL.")
     try:
         sales = extract_sales(csv_path, run_id, fallo)
         resumen, top_productos, timestamp = transform_sales(sales, run_id)
@@ -148,11 +149,13 @@ def run_etl_orquestator(csv_path, db_path, fallo=False):
 
         duracion_ms = round((time.perf_counter() - start) * 1000, 2)
         log_event("INFO", "etapa_fin", run_id, "run", "OK", duracion_ms)
+        print(f"ETL completado. run_id={run_id}, timestamp={timestamp}")
         return run_id, timestamp
     except Exception as error:
         duracion_ms = round((time.perf_counter() - start) * 1000, 2)
         log_event("ERROR", "etapa_error", run_id, "run", "ERROR", duracion_ms)
         write_alert(run_id, "run", str(error))
+        print(f"ERROR en ETL. run_id={run_id}, timestamp={timestamp}")
         raise
 
 
@@ -160,4 +163,4 @@ def run_etl_orquestator(csv_path, db_path, fallo=False):
 if __name__ == "__main__":
     fallo = "--fallo" in sys.argv
     run_id, timestamp = run_etl_orquestator(CSV_PATH, DB_PATH, fallo)
-    print(f"ETL completado. run_id={run_id}, timestamp={timestamp}")
+    
