@@ -13,7 +13,6 @@ class Resumen(Base):
     ticket_promedio = Column(Integer)
     clientes_unicos = Column(Integer)
 
-
 class TopProducto(Base):
     __tablename__ = "top_productos"
     sku = Column(String, primary_key=True)

@@ -9,13 +9,13 @@ import pandas as pd
 import logging
 from pythonjsonlogger import jsonlogger
 
-#Configuracion de rutas
+#-----------------------------------Configuracion de rutas------------------------------------
 BASE_DIR = Path(__file__).resolve().parent
 CSV_PATH = BASE_DIR / "data" / "ventas_marzo.csv"
 DB_PATH = BASE_DIR / "db" / "ventas.db"
 LOG_PATH = BASE_DIR / "logs" / "etl.log"
 ALERTS_PATH = BASE_DIR / "logs" / "alertas.log"
-# LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+
 
 #---------------------------------------Logger Config-------------------------------------------
 
@@ -61,14 +61,17 @@ def write_alert(run_id, etapa, error):
 def extract_sales(csv_path, run_id, fallo=False):
     log_event("INFO", "etapa_inicio", run_id, "extract", "OK")
     start = time.perf_counter()
+
     try:
         if fallo:
             write_alert(run_id, "extract", "Fallo provocado para testing")
             print(f"Fallo provocado para testing, revisa la alerta en logs/alertas.log. run_id={run_id}")
+
         sales = pd.read_csv(csv_path)
         duracion_ms = round((time.perf_counter() - start) * 1000, 2)
         log_event("INFO", "etapa_fin", run_id, "extract", "OK", duracion_ms)
         return sales
+    
     except Exception as error:
         duracion_ms = round((time.perf_counter() - start) * 1000, 2)
         log_event("ERROR", "etapa_error", run_id, "extract", "ERROR", duracion_ms)
@@ -79,14 +82,13 @@ def extract_sales(csv_path, run_id, fallo=False):
 def transform_sales(sales, run_id):
     log_event("INFO", "etapa_inicio", run_id, "transform", "OK")
     start = time.perf_counter()
+
     try:
         total_ventas = int(sales["total"].sum())
         n_transacciones = int(len(sales))
         ticket_promedio = int(total_ventas / n_transacciones)
         clientes_unicos = int(sales["cliente_id"].nunique())
-
         timestamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
-
         resumen = pd.DataFrame(
             [
                 {
@@ -139,18 +141,18 @@ def load_sales(resumen, top_productos, db_path, run_id):
 def run_etl_orquestator(csv_path, db_path, fallo=False):
     run_id = uuid.uuid4().hex[:8]
     start = time.perf_counter()
-
     log_event("INFO", "etapa_inicio", run_id, "orquestation", "OK")
     print(f"Iniciando ETL.")
+
     try:
         sales = extract_sales(csv_path, run_id, fallo)
         resumen, top_productos, timestamp = transform_sales(sales, run_id)
         load_sales(resumen, top_productos, db_path, run_id)
-
         duracion_ms = round((time.perf_counter() - start) * 1000, 2)
         log_event("INFO", "etapa_fin", run_id, "orquestation", "OK", duracion_ms)
         print(f"ETL completado. run_id={run_id}, timestamp={timestamp}")
         return run_id, timestamp
+    
     except Exception as error:
         duracion_ms = round((time.perf_counter() - start) * 1000, 2)
         log_event("ERROR", "etapa_error", run_id, "orquestation", "ERROR", duracion_ms)

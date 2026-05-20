@@ -9,12 +9,10 @@ class ResumenSchema(BaseModel):
     ticket_promedio: int
     clientes_unicos: int
 
-
 class TopProductoSchema(BaseModel):
     sku: str
     nombre: str
     total_vendido: int
-
 
 class TopProductosResponseSchema(BaseModel):
     top_productos: list[TopProductoSchema]
