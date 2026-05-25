@@ -3,7 +3,7 @@ from datetime import datetime
 from etl import run_etl_orquestator, CSV_PATH, DB_PATH
 
 segundos_de_ejecucion = 60
-ciclos = 5
+ciclos = 1
 count = 0
 
 def job():
