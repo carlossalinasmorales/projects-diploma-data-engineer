@@ -1,4 +1,4 @@
 .atl
 .venv
 01-data/*
-01-output/*
+02-data/*
