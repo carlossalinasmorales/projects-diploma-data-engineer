@@ -2,3 +2,5 @@
 .venv
 01-data/*
 02-data/*
+!01-data/.gitkeep
+!02-data/.gitkeep
